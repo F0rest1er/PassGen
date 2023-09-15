@@ -6,56 +6,66 @@ import customtkinter
 class PassGen:
     def __init__(self, root):
         self.root = root
-        self.root.title("PassGen")
+        self.root.title("PassGen")  # Set the window title to "PassGen"
 
-        self.create_widgets()
+        self.create_widgets()  # Call the method to create widgets
 
     def create_widgets(self):
-        self.length_label = customtkinter.CTkLabel(self.root, text="Длина пароля:")
+        # Create and pack the label for password length
+        self.length_label = customtkinter.CTkLabel(self.root, text="Password Length:")
         self.length_label.pack()
 
+        # Create and pack the entry field for password length
         self.length_entry = customtkinter.CTkEntry(self.root)
         self.length_entry.pack()
 
+        # Create and pack the checkbox for uppercase letters
         self.use_uppercase_var = tk.BooleanVar()
         self.use_uppercase_var.set(True)
-        self.uppercase_check = customtkinter.CTkCheckBox(self.root, text="Заглавные буквы", variable=self.use_uppercase_var)
+        self.uppercase_check = customtkinter.CTkCheckBox(self.root, text="Uppercase Letters", variable=self.use_uppercase_var)
         self.uppercase_check.pack()
 
+        # Create and pack the checkbox for lowercase letters
         self.use_lowercase_var = tk.BooleanVar()
         self.use_lowercase_var.set(True)
-        self.lowercase_check = customtkinter.CTkCheckBox(self.root, text="Строчные буквы", variable=self.use_lowercase_var)
+        self.lowercase_check = customtkinter.CTkCheckBox(self.root, text="Lowercase Letters", variable=self.use_lowercase_var)
         self.lowercase_check.pack()
 
+        # Create and pack the checkbox for digits
         self.use_digits_var = tk.BooleanVar()
         self.use_digits_var.set(True)
-        self.digits_check = customtkinter.CTkCheckBox(self.root, text="Цифры", variable=self.use_digits_var)
+        self.digits_check = customtkinter.CTkCheckBox(self.root, text="Digits", variable=self.use_digits_var)
         self.digits_check.pack()
 
+        # Create and pack the checkbox for special characters
         self.use_special_var = tk.BooleanVar()
         self.use_special_var.set(False)
-        self.special_check = customtkinter.CTkCheckBox(self.root, text="Специальные символы", variable=self.use_special_var)
+        self.special_check = customtkinter.CTkCheckBox(self.root, text="Special Characters", variable=self.use_special_var)
         self.special_check.pack()
 
-        self.count_label = customtkinter.CTkLabel(self.root, text="Количество паролей:")
+        # Create and pack the label for the number of passwords to generate
+        self.count_label = customtkinter.CTkLabel(self.root, text="Number of Passwords:")
         self.count_label.pack()
 
+        # Create and pack the entry field for the number of passwords to generate
         self.count_entry = customtkinter.CTkEntry(self.root)
         self.count_entry.pack()
 
-        self.generate_button = customtkinter.CTkButton(self.root, text="Сгенерировать", command=self.generate_passwords)
+        # Create and pack the "Generate" button and associate it with the generate_passwords method
+        self.generate_button = customtkinter.CTkButton(self.root, text="Generate", command=self.generate_passwords)
         self.generate_button.pack()
 
-        self.generated_passwords_text = customtkinter.CTkTextbox(self.root, height=150, width=300)
+        # Create and pack the textbox to display generated passwords
+        self.generated_passwords_text = customtkinter.CTkTextbox(self.root, height=150, width=250)
         self.generated_passwords_text.pack()
 
     def generate_passwords(self):
-        length = int(self.length_entry.get())
-        use_uppercase = self.use_uppercase_var.get()
-        use_lowercase = self.use_lowercase_var.get()
-        use_digits = self.use_digits_var.get()
-        use_special = self.use_special_var.get()
-        count = int(self.count_entry.get())
+        length = int(self.length_entry.get())  # Get the selected password length
+        use_uppercase = self.use_uppercase_var.get()  # Get the checkbox state for uppercase letters
+        use_lowercase = self.use_lowercase_var.get()  # Get the checkbox state for lowercase letters
+        use_digits = self.use_digits_var.get()  # Get the checkbox state for digits
+        use_special = self.use_special_var.get()  # Get the checkbox state for special characters
+        count = int(self.count_entry.get())  # Get the number of passwords to generate
 
         characters = ""
         if use_uppercase:
